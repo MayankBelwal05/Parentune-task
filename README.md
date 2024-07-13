@@ -1,5 +1,8 @@
 ## Parentune Task
 
+## Deployed App 🖊️
+#### Frontend: https://parentune-task-nine.vercel.app/
+
 ## Installation & Getting started
 To run the project locally, follow these steps:
 
