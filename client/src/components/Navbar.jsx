@@ -1,8 +1,9 @@
+import './navbar.css';
 const Navbar = ()=>{
 
 return(
     <div className="navbar">
-    <h1>Parentune</h1>
+    <h1>parentune</h1>
     </div>
 )
 }

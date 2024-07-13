@@ -1,25 +1,17 @@
 import React, { useEffect, useState, useRef } from 'react';
-import Sidebar from './components/Sidebar';
+import Navbar from './components/Navbar';
 import Card from './components/Card';
-import { fetchDailyFocus } from './api/api';
+import fetchDailyFocus from './api/api';
 import './App.css';
 
-const App =() => {
-
+const App = () => {
   const [sections, setSections] = useState([]);
   const refs = useRef([]);
 
   useEffect(() => {
-    const getData = async () => {
-      try {
-        const data = await fetchDailyFocus();
-        setSections(data.content.data.data);
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    };
-
-    getData();
+    fetchDailyFocus()
+      .then(content => setSections(content))
+      .catch(error => console.error('Error fetching data:', error));
   }, []);
 
   const handleScroll = (index) => {
@@ -27,24 +19,28 @@ const App =() => {
   };
 
   return (
+    <>
+      <Navbar />
+      <h1 className="headline">Today's Focus</h1>
     <div className="app-container">
-      <Sidebar sections={sections} handleScroll={handleScroll} />
       <div className="content">
-        <h2>initial demo</h2>
         {sections.map((section, index) => (
           <div key={index} ref={(el) => (refs.current[index] = el)}>
-            <Card
-              image={section.thumb}
-              title={section.title}
-              description={section.description}
-              duration={section.duration}
-
-            />
+            {section.data.map((item, idx) => (
+              <Card
+                key={idx}
+                image={item.thumb}
+                title={item.custom_title || item.title}
+                description={item.summary || item.description}
+                duration={item.duration}
+              />
+            ))}
           </div>
         ))}
       </div>
     </div>
-  );
+    </>
+    );
 };
 
 export default App;

@@ -1,9 +1,35 @@
-.card{
-    border: 1px solid black;
-    border:8px;
-}
-
-cardimage{
-    width: 100%;
+.card {
+    background-color: #fff;
+    border-radius: 5px;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .card img {
+    max-width: 100%;
     height: auto;
-}
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .card h3 {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    color: #333;
+  }
+  
+  .card p {
+    margin: 0 0 10px 0;
+    color: #666;
+    font-size: 16px;
+  }
+  
+  .card .duration {
+    font-size: 14px;
+    color: #999;
+  }
+  
